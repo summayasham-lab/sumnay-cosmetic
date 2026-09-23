@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — Sumnay Cosmetic</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .auth-wrap {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md);
+  }
+  .auth-wrap h1 {
+    font-style: italic;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  .auth-sub {
+    text-align: center;
+    color: var(--color-ink-soft);
+    margin-bottom: var(--space-md);
+    font-size: 0.92rem;
+  }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid rgba(43,27,34,0.18);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background: var(--color-ivory);
+  }
+  .form-group input:focus {
+    outline: 2px solid var(--color-rose);
+    outline-offset: 1px;
+  }
+  .form-msg {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: var(--radius-sm);
+    display: none;
+  }
+  .form-msg.error { background: #F5DAD4; color: #7A2E1F; display: block; }
+  .form-msg.success { background: #DCE5D8; color: #3E4E38; display: block; }
+  .auth-switch {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="nav-logo">Sumnay</a>
+    <ul class="nav-links">
+      <li><a href="products.html">Shop</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="cart.html" class="icon-btn">Bag <span class="cart-count" id="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="auth-wrap">
+  <h1>Sign in</h1>
+  <p class="auth-sub">Welcome back to Sumnay Cosmetic.</p>
+
+  <div class="form-msg" id="form-msg"></div>
+
+  <form id="login-form">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Sign in</button>
+  </form>
+
+  <p class="auth-switch">Don't have an account? <a href="register.html" style="color:var(--color-rose); font-weight:600;">Create one</a></p>
+</div>
+
+<script src="../js/cart.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/login.js"></script>
+</body>
+</html>

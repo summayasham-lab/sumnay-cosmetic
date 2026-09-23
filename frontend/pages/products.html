@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop All — Sumnay Cosmetic</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .shop-header {
+    background: var(--color-plum);
+    color: var(--color-cream-text);
+    padding: var(--space-lg) 0 var(--space-md);
+  }
+  .shop-header h1 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-style: italic;
+  }
+  .shop-header p {
+    color: rgba(246, 236, 228, 0.75);
+    margin-top: 0.6rem;
+    max-width: 46ch;
+  }
+
+  .shop-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+  }
+
+  .filter-panel h3 {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    margin-bottom: var(--space-sm);
+  }
+
+  .filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-md);
+  }
+
+  .filter-list li { margin-bottom: 0.5rem; }
+
+  .filter-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    cursor: pointer;
+    color: var(--color-ink);
+    padding: 0.3rem 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    transition: color 0.2s var(--ease);
+  }
+
+  .filter-btn:hover, .filter-btn.active { color: var(--color-rose); font-weight: 700; }
+
+  .filter-btn .count { color: var(--color-ink-soft); font-size: 0.8rem; font-weight: 400 !important; }
+
+  .results-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .product-image {
+    background: var(--color-ivory-dim);
+    aspect-ratio: 4 / 5;
+    padding: 0;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-card a { display: block; }
+
+  @media (max-width: 860px) {
+    .shop-layout { grid-template-columns: 1fr; }
+    .filter-panel { display: flex; overflow-x: auto; gap: var(--space-md); padding-bottom: 0.5rem; }
+    .filter-list { display: flex; gap: 1rem; margin: 0; white-space: nowrap; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="nav-logo">Sumnay</a>
+    <ul class="nav-links">
+      <li><a href="products.html">Shop</a></li>
+      <li><a href="products.html?category=Skincare">Skincare</a></li>
+      <li><a href="products.html?category=Haircare">Haircare</a></li>
+      <li><a href="products.html?category=Fragrance">Fragrance</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="orders.html" class="icon-btn">Orders</a>
+      <a href="login.html" class="icon-btn">Account</a>
+      <a href="cart.html" class="icon-btn">Bag <span class="cart-count" id="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="shop-header">
+  <div class="container">
+    <p class="eyebrow" style="color: var(--color-rose-dim);">Full collection</p>
+    <h1>Shop all products</h1>
+    <p>71 products across blush, brow, brush, eyeliner, foundation, lipstick, mascara, fragrance, skincare, and haircare.</p>
+  </div>
+</section>
+
+<div class="container shop-layout">
+  <aside class="filter-panel">
+    <h3>Category</h3>
+    <ul class="filter-list" id="category-filters">
+      <li><button class="filter-btn active" data-category="all">All products <span class="count" id="count-all"></span></button></li>
+      <li><button class="filter-btn" data-category="Blush">Blush <span class="count" id="count-Blush"></span></button></li>
+      <li><button class="filter-btn" data-category="Brow">Brow <span class="count" id="count-Brow"></span></button></li>
+      <li><button class="filter-btn" data-category="Brush">Brush <span class="count" id="count-Brush"></span></button></li>
+      <li><button class="filter-btn" data-category="Eyeliner">Eyeliner <span class="count" id="count-Eyeliner"></span></button></li>
+      <li><button class="filter-btn" data-category="Foundation">Foundation <span class="count" id="count-Foundation"></span></button></li>
+      <li><button class="filter-btn" data-category="Lipstick">Lipstick <span class="count" id="count-Lipstick"></span></button></li>
+      <li><button class="filter-btn" data-category="Mascara">Mascara <span class="count" id="count-Mascara"></span></button></li>
+      <li><button class="filter-btn" data-category="Fragrance">Fragrance <span class="count" id="count-Fragrance"></span></button></li>
+      <li><button class="filter-btn" data-category="Skincare">Skincare <span class="count" id="count-Skincare"></span></button></li>
+      <li><button class="filter-btn" data-category="Haircare">Haircare <span class="count" id="count-Haircare"></span></button></li>
+    </ul>
+  </aside>
+
+  <main>
+    <div class="results-bar">
+      <span id="results-count">71 products</span>
+      <input type="text" id="search-input" placeholder="Search products..." style="padding:0.5rem 0.9rem; border:1px solid rgba(43,27,34,0.18); border-radius:20px; font-family:var(--font-body); font-size:0.85rem; width:220px;">
+    </div>
+    <div class="product-grid" id="product-grid">
+      <!-- Rendered by JS from products-data.js -->
+    </div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p style="opacity:0.6; font-size:0.85rem;">&copy; 2026 Sumnay Cosmetic. Final year project.</p>
+  </div>
+</footer>
+
+<script src="../js/products-data.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/products-page.js"></script>
+</body>
+</html>

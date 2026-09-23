@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Sumnay Cosmetic</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .admin-header {
+    background: var(--color-plum);
+    color: var(--color-cream-text);
+    padding: var(--space-md) 0;
+  }
+  .admin-header h1 { font-style: italic; font-size: 1.8rem; }
+
+  .admin-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: var(--space-md) 0;
+    border-bottom: 1px solid rgba(43,27,34,0.1);
+  }
+  .admin-tab {
+    background: none;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+    border-bottom: 2px solid transparent;
+  }
+  .admin-tab.active { color: var(--color-plum); border-bottom-color: var(--color-rose); }
+
+  .admin-panel { display: none; }
+  .admin-panel.active { display: block; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.7rem 0.5rem; border-bottom: 1px solid rgba(43,27,34,0.08); }
+  th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-ink-soft); }
+  td img { width: 42px; height: 48px; object-fit: cover; border-radius: 4px; }
+
+  select, input[type="text"], input[type="number"] {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid rgba(43,27,34,0.18);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+  }
+
+  .btn-small { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
+  .btn-danger { background: #B8433A; color: white; }
+
+  .admin-msg {
+    font-size: 0.85rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: var(--radius-sm);
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .admin-msg.error { background: #F5DAD4; color: #7A2E1F; display: block; }
+  .admin-msg.success { background: #DCE5D8; color: #3E4E38; display: block; }
+
+  .add-product-form {
+    background: var(--color-ivory-dim);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+  }
+  .add-product-form input, .add-product-form select { width: 100%; }
+  .add-product-form .full-width { grid-column: 1 / -1; }
+
+  .locked-state { text-align: center; padding: var(--space-xl) 0; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="nav-logo">Sumnay</a>
+    <ul class="nav-links"><li><a href="products.html">Shop</a></li></ul>
+    <div class="nav-actions">
+      <a href="orders.html" class="icon-btn">Orders</a>
+      <a href="cart.html" class="icon-btn">Bag <span class="cart-count" id="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="admin-header">
+  <div class="container">
+    <h1>Admin dashboard</h1>
+  </div>
+</section>
+
+<div class="container" id="admin-root">
+  <!-- Rendered by JS: either the locked state or the full dashboard -->
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p style="opacity:0.6; font-size:0.85rem;">&copy; 2026 Sumnay Cosmetic. Final year project.</p>
+  </div>
+</footer>
+
+<script src="../js/cart.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>

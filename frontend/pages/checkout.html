@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Sumnay Cosmetic</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .checkout-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+    align-items: flex-start;
+  }
+  .page-title { font-style: italic; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: var(--space-md); }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid rgba(43,27,34,0.18);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background: var(--color-ivory);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .summary-box {
+    background: var(--color-ivory-dim);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    position: sticky;
+    top: 100px;
+  }
+  .summary-row { display: flex; justify-content: space-between; margin-bottom: 0.7rem; font-size: 0.95rem; }
+  .summary-total { font-weight: 700; font-size: 1.15rem; border-top: 1px solid rgba(43,27,34,0.1); padding-top: 0.8rem; margin-top: 0.5rem; }
+  .form-msg {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: var(--radius-sm);
+    display: none;
+  }
+  .form-msg.error { background: #F5DAD4; color: #7A2E1F; display: block; }
+  .form-msg.success { background: #DCE5D8; color: #3E4E38; display: block; }
+  .mock-note {
+    font-size: 0.8rem;
+    color: var(--color-ink-soft);
+    margin-top: 0.8rem;
+    text-align: center;
+  }
+  @media (max-width: 860px) {
+    .checkout-layout { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="nav-logo">Sumnay</a>
+    <ul class="nav-links"><li><a href="products.html">Shop</a></li></ul>
+    <div class="nav-actions">
+      <a href="cart.html" class="icon-btn">Bag <span class="cart-count" id="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <h1 class="page-title">Checkout</h1>
+  <div class="form-msg" id="form-msg"></div>
+  <div class="checkout-layout" id="checkout-layout">
+    <form id="checkout-form">
+      <div class="form-group">
+        <label for="street">Street address</label>
+        <input type="text" id="street" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" required>
+        </div>
+        <div class="form-group">
+          <label for="postalCode">Postal code</label>
+          <input type="text" id="postalCode" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" required>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Place order</button>
+      <p class="mock-note">This is a demo checkout — no real payment is processed.</p>
+    </form>
+
+    <div class="summary-box" id="order-summary">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p style="opacity:0.6; font-size:0.85rem;">&copy; 2026 Sumnay Cosmetic. Final year project.</p>
+  </div>
+</footer>
+
+<script src="../js/products-data.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/checkout.js"></script>
+</body>
+</html>

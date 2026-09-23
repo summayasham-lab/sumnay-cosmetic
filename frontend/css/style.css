@@ -1,0 +1,276 @@
+/* ==========================================================================
+   SUMNAY COSMETIC — Design System
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Color tokens */
+  --color-ivory: #FAF3EC;
+  --color-ivory-dim: #F0E6DA;
+  --color-plum: #341C29;
+  --color-plum-deep: #241522;
+  --color-rose: #C77B6C;
+  --color-rose-dim: #E8B9AE;
+  --color-gold: #B58A54;
+  --color-sage: #8B9A82;
+  --color-ink: #2A1E22;
+  --color-ink-soft: #6B5A5F;
+  --color-cream-text: #F6ECE4;
+
+  /* Type */
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Manrope', sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7rem;
+
+  /* Radii / misc */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-ivory);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+}
+
+/* ---------- Layout helpers ---------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-xl) 0;
+}
+
+/* ---------- Navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 243, 236, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(43, 27, 34, 0.08);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 0;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-plum);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nav-links a {
+  position: relative;
+  transition: color 0.2s var(--ease);
+}
+
+.nav-links a:hover { color: var(--color-rose); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-plum);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cart-count {
+  background: var(--color-rose);
+  color: var(--color-cream-text);
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  background: var(--color-plum);
+  color: var(--color-cream-text);
+}
+.btn-primary:hover { background: var(--color-plum-deep); }
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-plum);
+  color: var(--color-plum);
+}
+.btn-outline:hover { background: var(--color-plum); color: var(--color-cream-text); }
+
+.btn-light {
+  background: var(--color-ivory);
+  color: var(--color-plum);
+}
+
+/* ---------- Swatch trail (signature element) ---------- */
+.swatch-trail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.swatch-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ---------- Product card ---------- */
+.product-card {
+  background: var(--color-ivory);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -20px rgba(52, 28, 41, 0.25);
+}
+
+.product-image {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--space-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-info {
+  padding: var(--space-sm) 0.25rem;
+}
+
+.product-category {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  margin-bottom: 0.3rem;
+}
+
+.product-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.product-price {
+  font-weight: 700;
+  color: var(--color-plum);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--color-plum);
+  color: var(--color-cream-text);
+  padding: var(--space-lg) 0 var(--space-md);
+}
+
+.site-footer a { opacity: 0.85; }
+.site-footer a:hover { opacity: 1; color: var(--color-rose-dim); }
+
+/* ---------- Accessibility ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  :root { --space-xl: 4rem; }
+}

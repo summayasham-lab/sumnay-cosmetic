@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumnay Cosmetic — Beauty, Considered</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  /* Page-specific styles */
+  .hero {
+    background: var(--color-plum);
+    color: var(--color-cream-text);
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-xl) 0 var(--space-lg);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    color: var(--color-rose-dim);
+  }
+
+  .hero-title {
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    font-style: italic;
+    line-height: 1.02;
+    margin: var(--space-sm) 0 var(--space-md);
+  }
+
+  .hero-copy {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(246, 236, 228, 0.8);
+    max-width: 34ch;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* Signature: diagonal swatch trail */
+  .hero-visual {
+    position: relative;
+    height: 420px;
+  }
+
+  .trail-diagonal {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .trail-line {
+    position: relative;
+    width: 2px;
+    height: 100%;
+    background: rgba(246, 236, 228, 0.15);
+    transform: rotate(18deg);
+  }
+
+  .trail-swatch {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px -8px rgba(0,0,0,0.4);
+    border: 3px solid rgba(246, 236, 228, 0.85);
+  }
+
+  .stats-row {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(246, 236, 228, 0.15);
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-style: italic;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(246, 236, 228, 0.65);
+    margin-top: 0.2rem;
+  }
+
+  /* Category strip */
+  .category-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .category-tile {
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-sm);
+    color: var(--color-cream-text);
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s var(--ease);
+  }
+
+  .category-tile:hover { transform: translateY(-6px); }
+
+  .category-tile h3 {
+    font-size: 1.3rem;
+    font-style: italic;
+  }
+
+  .category-tile span {
+    font-size: 0.8rem;
+    opacity: 0.85;
+  }
+
+  /* Section headers */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-style: italic;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
+
+  .product-image.p1 { background: linear-gradient(155deg, #E8B9AE, #C77B6C); }
+  .product-image.p2 { background: linear-gradient(155deg, #D9CDBE, #B58A54); }
+  .product-image.p3 { background: linear-gradient(155deg, #B7C2AF, #8B9A82); }
+  .product-image.p4 { background: linear-gradient(155deg, #E4D6D2, #341C29); }
+
+  .bottle {
+    width: 48%;
+    height: 62%;
+    background: rgba(250, 243, 236, 0.9);
+    border-radius: 14px 14px 6px 6px;
+    position: relative;
+  }
+  .bottle::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 34%;
+    height: 16px;
+    background: rgba(250, 243, 236, 0.9);
+    border-radius: 4px;
+  }
+
+  .promo-banner {
+    background: var(--color-ivory-dim);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .promo-banner h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); font-style: italic; max-width: 16ch; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { height: 260px; }
+    .category-strip { grid-template-columns: repeat(2, 1fr); }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .promo-banner { grid-template-columns: 1fr; text-align: center; }
+    .stats-row { gap: var(--space-md); flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="nav-logo">Sumnay</a>
+    <ul class="nav-links">
+      <li><a href="products.html">Shop</a></li>
+      <li><a href="products.html?category=Skincare">Skincare</a></li>
+      <li><a href="products.html?category=Haircare">Haircare</a></li>
+      <li><a href="products.html?category=Fragrance">Fragrance</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="orders.html" class="icon-btn">Orders</a>
+      <a href="login.html" class="icon-btn">Account</a>
+      <a href="cart.html" class="icon-btn">Bag <span class="cart-count" id="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow hero-eyebrow">Sumnay Cosmetic — Est. 2026</p>
+      <h1 class="hero-title">Beauty,<br>considered.</h1>
+      <p class="hero-copy">Clean formulas, honest shades, and packaging you'll actually want to keep. Made for skin, not just for shelves.</p>
+      <div class="hero-ctas">
+        <a href="products.html" class="btn btn-primary">Shop the collection</a>
+        <a href="#categories" class="btn btn-outline" style="border-color: rgba(246,236,228,0.4); color: var(--color-cream-text);">Explore categories</a>
+      </div>
+      <div class="stats-row">
+        <div><div class="stat-num">120+</div><div class="stat-label">Products</div></div>
+        <div><div class="stat-num">4.8/5</div><div class="stat-label">Avg. rating</div></div>
+        <div><div class="stat-num">30-day</div><div class="stat-label">Returns</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="trail-diagonal">
+        <div class="trail-line">
+          <div class="trail-swatch" style="background:#C77B6C; top:0%;"></div>
+          <div class="trail-swatch" style="background:#B58A54; top:22%; width:34px; height:34px;"></div>
+          <div class="trail-swatch" style="background:#8B9A82; top:44%;"></div>
+          <div class="trail-swatch" style="background:#E8B9AE; top:66%; width:38px; height:38px;"></div>
+          <div class="trail-swatch" style="background:#341C29; top:88%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Shop by category</p>
+        <h2>Find your shade</h2>
+      </div>
+    </div>
+    <div class="category-strip">
+      <a href="products.html?category=Skincare" class="category-tile" style="background: linear-gradient(160deg, #8B9A82, #5F6B58);">
+        <span>10 products</span>
+        <h3>Skincare</h3>
+      </a>
+      <a href="products.html?category=Lipstick" class="category-tile" style="background: linear-gradient(160deg, #C77B6C, #8C4A3E);">
+        <span>6 products</span>
+        <h3>Makeup</h3>
+      </a>
+      <a href="products.html?category=Haircare" class="category-tile" style="background: linear-gradient(160deg, #B58A54, #7A5B34);">
+        <span>10 products</span>
+        <h3>Haircare</h3>
+      </a>
+      <a href="products.html?category=Fragrance" class="category-tile" style="background: linear-gradient(160deg, #341C29, #1C0F17);">
+        <span>9 products</span>
+        <h3>Fragrance</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Editor's picks</p>
+        <h2>Featured products</h2>
+      </div>
+      <a href="products.html" class="btn btn-outline">View all</a>
+    </div>
+    <div class="product-grid" id="featured-products">
+      <!-- Rendered dynamically by JS from products-data.js -->
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="promo-banner">
+      <h2>New in: the Skincare Edit — 15% off this week only.</h2>
+      <a href="products.html?category=skincare" class="btn btn-primary">Shop the edit</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:2rem;">
+      <div>
+        <p class="nav-logo" style="color: var(--color-cream-text);">Sumnay</p>
+        <p style="opacity:0.7; max-width:28ch; margin-top:0.5rem; font-size:0.9rem;">Beauty, considered. Clean formulas made to be lived in.</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="color: var(--color-rose-dim);">Shop</p>
+        <p style="margin-top:0.6rem;"><a href="products.html">All products</a></p>
+        <p style="margin-top:0.4rem;"><a href="products.html?category=Skincare">Skincare</a></p>
+        <p style="margin-top:0.4rem;"><a href="products.html?category=Haircare">Haircare</a></p>
+      </div>
+      <div>
+        <p class="eyebrow" style="color: var(--color-rose-dim);">Account</p>
+        <p style="margin-top:0.6rem;"><a href="login.html">Sign in</a></p>
+        <p style="margin-top:0.4rem;"><a href="register.html">Create account</a></p>
+        <p style="margin-top:0.4rem;"><a href="cart.html">Your bag</a></p>
+      </div>
+    </div>
+    <p style="margin-top:var(--space-lg); opacity:0.5; font-size:0.8rem;">&copy; 2026 Sumnay Cosmetic. Final year project.</p>
+  </div>
+</footer>
+
+<script src="../js/products-data.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/homepage.js"></script>
+</body>
+</html>
