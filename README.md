@@ -5,7 +5,7 @@ Final year project — a working e-commerce website for a cosmetics store.
 ## What's in this folder
 
 - **`frontend/`** — all the pages you see (HTML/CSS/JS): homepage, product listing,
-  product detail, cart, checkout, login, register. Uses your 42 real product photos.
+  product detail, cart, checkout, login, register. Uses your 71 real product photos.
 - **`backend/`** — the Node.js/Express + MongoDB API that powers accounts, the product
   catalog, and orders. See `backend/README.md` for detailed setup steps.
 
@@ -16,7 +16,7 @@ Final year project — a working e-commerce website for a cosmetics store.
 cd backend
 npm install
 cp .env.example .env
-npm run seed      (loads your 42 products into the database)
+npm run seed      (loads your 71 products into the database)
 npm run dev        (starts the API on http://localhost:5000)
 ```
 Full details, including how to set up MongoDB, are in `backend/README.md`.
@@ -83,7 +83,7 @@ sumnay-cosmetic-website/
 ├── frontend/
 │   ├── css/style.css
 │   ├── js/
-│   ├── images/products/   (your 42 real photos)
+│   ├── images/products/   (your 71 real photos)
 │   └── pages/
 │       ├── index.html          — homepage
 │       ├── products.html       — full catalog, filter + search
